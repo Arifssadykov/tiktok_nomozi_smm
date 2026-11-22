@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="data:,">
+  <title>Nomozi</title>
+  <style>
+    body {
+      box-sizing: border-box;
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      min-height: 100svh;
+      margin: 0;
+      padding: 24px;
+      background: #fafaf9;
+      color: #18181b;
+      font: 1rem/1.5 system-ui, sans-serif;
+      text-align: center;
+    }
+
+    main {
+      max-width: 24rem;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 2.75rem;
+      line-height: 1.15;
+      letter-spacing: -0.04em;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    a {
+      display: inline-block;
+      margin: 24px 0 16px;
+      padding: 12px 22px;
+      border-radius: 12px;
+      background: #18181b;
+      color: #fff;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    a:focus-visible {
+      outline: 2px solid #18181b;
+      outline-offset: 4px;
+    }
+
+    .hint {
+      color: #52525b;
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Nomozi</h1>
+    <p>Plan your meals. Save on groceries.</p>
+    <a id="app-store" href="https://apps.apple.com/app/apple-store/id6825524795?pt=128022253&amp;ct=tiktoksmm&amp;mt=8">Open in App Store</a>
+    <p class="hint">If the App Store doesn't open, tap the menu and choose Open in Browser.</p>
+  </main>
+  <script>
+    (() => {
+      const navigation = performance.getEntriesByType("navigation")[0];
+      if (history.state?.appStoreAttempted || navigation?.type === "back_forward") {
+        return;
+      }
+
+      // Keep the fallback in history without retrying if the user returns to it.
+      history.replaceState({ appStoreAttempted: true }, "");
+      window.location.assign(document.getElementById("app-store").href);
+    })();
+  </script>
+</body>
+</html>
