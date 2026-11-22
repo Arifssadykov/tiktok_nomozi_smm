@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-US">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="robots" content="noindex, nofollow">
   <link rel="icon" href="data:,">
   <title>Nomozi</title>
@@ -10,15 +10,57 @@
     body {
       box-sizing: border-box;
       display: grid;
+      grid-template-rows: auto 1fr;
       place-items: center;
       min-height: 100vh;
       min-height: 100svh;
       margin: 0;
       padding: 24px;
+      padding: max(12px, env(safe-area-inset-top))
+        max(12px, env(safe-area-inset-right))
+        max(24px, env(safe-area-inset-bottom))
+        max(20px, env(safe-area-inset-left));
       background: #fafaf9;
       color: #18181b;
       font: 1rem/1.5 system-ui, sans-serif;
       text-align: center;
+    }
+
+    .browser-guide {
+      display: flex;
+      align-items: center;
+      justify-self: end;
+      gap: clamp(10px, 4vw, 24px);
+      text-align: left;
+    }
+
+    .browser-guide strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: clamp(1.125rem, 4.8vw, 1.375rem);
+      line-height: 1.2;
+    }
+
+    .browser-guide p {
+      color: #52525b;
+    }
+
+    .browser-guide strong,
+    .browser-guide b {
+      color: #18181b;
+    }
+
+    .browser-guide strong span {
+      white-space: nowrap;
+    }
+
+    .browser-guide svg {
+      display: block;
+      flex: none;
+      width: clamp(76px, 25vw, 124px);
+      height: auto;
+      color: #4944ce;
+      pointer-events: none;
     }
 
     main {
@@ -38,7 +80,7 @@
 
     a {
       display: inline-block;
-      margin: 24px 0 16px;
+      margin-top: 24px;
       padding: 12px 22px;
       border-radius: 12px;
       background: #18181b;
@@ -51,19 +93,23 @@
       outline: 2px solid #18181b;
       outline-offset: 4px;
     }
-
-    .hint {
-      color: #52525b;
-      font-size: 0.875rem;
-    }
   </style>
 </head>
 <body>
+  <header class="browser-guide">
+    <p>
+      <strong>Tap ⋯ in the <span>top-right corner</span></strong>
+      Select <b>“Open in Browser”</b> to download Nomozi
+    </p>
+    <svg viewBox="0 0 124 120" aria-hidden="true" focusable="false">
+      <path d="M8 109C57 111 92 73 108 12M76 26L108 12l9 33"
+        fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </header>
   <main>
     <h1>Nomozi</h1>
     <p>Plan your meals. Save on groceries.</p>
     <a id="app-store" href="https://apps.apple.com/app/apple-store/id6825524795?pt=128022253&amp;ct=tiktoksmm&amp;mt=8">Open in App Store</a>
-    <p class="hint">If the App Store doesn't open, tap the menu and choose Open in Browser.</p>
   </main>
   <script>
     (() => {
